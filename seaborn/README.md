@@ -7,7 +7,7 @@ Bu proje, Python'un en güçlü veri görselleştirme kütüphanelerinden biri o
 ## 📊 Özet Görünüm: Korelasyon Haritası
 Futbolcu özellikleri arasındaki (Yaş, Top Kontrolü, Hız vb.) ilişkileri anlamak için kullanılan ana ısı haritamız:
 
-![Ana Korelasyon Haritası](outputs/korelasyon_ozet.png)
+![Ana Korelasyon Haritası](outputs/gallery/01_correlation_heatmap.png)
 
 ---
 
@@ -40,36 +40,36 @@ Veri setindeki oyuncuların fiziksel ve teknik özelliklerinin dağılımını f
 
 | Scatter Plot (Yaş Grupları) | Joint Plot (Hexbin) |
 |:---:|:---:|
-| ![Scatter](outputs/gallery/scatter_plot.png) | ![Joint](outputs/gallery/joint_plot_hex.png) |
+| ![Scatter](outputs/gallery/02_scatter_age_hue.png) | ![Joint](outputs/gallery/03_joint_plot_hex.png) |
 
 | Violin Plot (Yetenek Dağılımı) | Count Plot (Yaş Frekansı) |
 |:---:|:---:|
-| ![Violin](outputs/gallery/violin_plot.png) | ![Count](outputs/gallery/count_plot.png) |
+| ![Violin](outputs/gallery/04_violin_distribution.png) | ![Count](outputs/gallery/05_count_plot_age.png) |
 
 ---
 
 ### 2. İstatistiksel İlişkiler ve Regresyon
 Yetenekler arasındaki doğrusal ilişkileri ve veri setindeki tüm değişkenlerin birbiriyle olan etkileşimini regresyon modelleriyle gözlemliyoruz.
 
-| Lmplot (Doğrusal Regresyon) | Yoğunluk Analizi (Joint KDE) |
+| Lmplot (Doğrusal Regresyon) | Yoğunluk Analizi (KDE) |
 |:---:|:---:|
-| ![Lmplot](outputs/gallery/lmplot.png) | ![Density](outputs/gallery/density_joint.png) |
+| ![Lmplot](outputs/gallery/06_regression_analysis.png) | ![Density](outputs/gallery/12_density_kde.png) |
 
 **Pair Plot: Değişken Matrisi**
-![Pair Plot](outputs/gallery/pair_plot.png)
+![Pair Plot](outputs/gallery/07_pair_plot_matrix.png)
 
 ---
-
+ 
 ### 3. Kategorik Karşılaştırmalar
 Ülkeler ve yaş grupları bazında yetenek ortalamalarını ve değişim trendlerini analiz ediyoruz.
-
+ 
 | Ülke Bazlı Yetenek (Bar) | Yetenek Değişim Trendi (Point) |
 |:---:|:---:|
-| ![Bar](outputs/gallery/bar_plot.png) | ![Point](outputs/gallery/point_plot.png) |
+| ![Bar](outputs/gallery/09_bar_plot.png) | ![Point](outputs/gallery/10_point_plot.png) |
 
 | Yaş Grupları (FacetGrid) | Histogram Dağılımı |
 |:---:|:---:|
-| ![Facet](outputs/gallery/facet_grid.png) | ![Hist](outputs/gallery/hist_plot.png) |
+| ![Facet](outputs/gallery/11_facet_grid.png) | ![Hist](outputs/gallery/11_facet_grid.png) |
 
 ---
 
@@ -78,11 +78,11 @@ Veriyi pivot tablolara dönüştürerek matris formunda ısı haritaları oluşt
 
 | Pivot Heatmap (Ülke vs Yaş) | Özel İşaretleme (Annotation) |
 |:---:|:---:|
-| ![Pivot](outputs/gallery/pivot_heatmap.png) | ![Annot](outputs/gallery/annotation_chart.png) |
+| ![Pivot](outputs/gallery/13_pivot_heatmap.png) | ![Annot](outputs/gallery/14_annotation.png) |
 
-| İlişki Matrisi (Pair Plot Alt) | Kümeleme Analizi (Cluster Map) |
+| Değişen Değişken Matrisi | Kümeleme Analizi (Cluster Map) |
 |:---:|:---:|
-| ![Pair Alt](outputs/gallery/pair_plot_alt.png) | ![Cluster](outputs/gallery/cluster_map_alt.png) |
+| ![Pair Matrix](outputs/gallery/07_pair_plot_matrix.png) | ![Cluster](outputs/gallery/15_cluster_map.png) |
 
 ---
 
