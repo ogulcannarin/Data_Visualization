@@ -1,53 +1,65 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from mpl_toolkits.mplot3d import Axes3D 
 
 # 1. Veriyi yükle
-df = pd.read_csv('player_stats.csv', encoding='latin-1', low_memory=False)
-print("Veri başarıyla yüklendi!")
+try:
+    df = pd.read_csv('player_stats.csv', encoding='latin-1', low_memory=False)
+    print("Veri başarıyla yüklendi!")
+    print("\nVerindeki Sütun İsimleri:", df.columns.tolist()) # Hatanın kaynağını görmek için
+except FileNotFoundError:
+    print("Dosya bulunamadı!")
 
-# 2. Sütun İsimlerini Ayarla (Senin terminal çıktına göre)
-name_col = 'player'
+# --- HATA DÜZELTME BÖLÜMÜ ---
+# Verinde 'nationality' yoksa, alternatif isimleri kontrol edelim
+possible_nation_cols = ['nationality', 'nation', 'Country', 'country', 'country_name']
+nation_col = None
 
-# Radar grafiğinde göstermek istediğimiz yetenekler
-# Terminal çıktındaki mevcut sütunlara göre bir liste oluşturdum:
-attributes = ['ball_control', 'dribbling', 'marking', 'slide_tackle', 'age'] 
+for col in possible_nation_cols:
+    if col in df.columns:
+        nation_col = col
+        break
 
-# Not: Eğer 'pace', 'shooting' gibi sütunlar dosyanın ilerleyen kısımlarında varsa 
-# listeye onları da ekleyebilirsin.
+if nation_col is None:
+    print("\nUYARI: Uyruk (Nationality) sütunu bulunamadı! Lütfen yukarıdaki listeden uygun sütun ismini seç.")
+    # Eğer hiçbiri yoksa hata vermemesi için ilk sütunu seçelim (geçici çözüm)
+    nation_col = df.columns[0] 
+# ----------------------------
 
-# 3. Oyuncuları Seç (Verideki isimlerin tam halini bulalım)
-# Messi ve Ronaldo'nun senin verinde nasıl yazıldığını kontrol ediyoruz
-print("\nVerideki bazı oyuncu isimleri:")
-print(df[name_col].head(10).tolist())
+plt.style.use('ggplot')
 
-# Örnek isimleri senin verine göre güncelleyebilirsin
-# Şimdilik en yüksek ball_control değerine sahip 2 oyuncuyu otomatik seçelim
-data = df.nlargest(2, 'ball_control')[[name_col] + attributes]
-print(f"\nKarşılaştırılan Oyuncular: {data[name_col].tolist()}")
+# --- FİGÜR 1: PASTA GRAFİĞİ ---
+top_countries = df[nation_col].value_counts().head(5)
 
-# 4. Radar Grafiği Oluşturma
-labels = np.array(attributes)
-num_vars = len(labels)
+plt.figure(figsize=(10, 7))
+explode = (0.1, 0, 0, 0, 0) 
 
-angles = np.linspace(0, 2 * np.pi, num_vars, endpoint=False).tolist()
-angles += angles[:1]
+plt.pie(top_countries, 
+        labels=top_countries.index, 
+        autopct='%1.1f%%', 
+        startangle=140, 
+        explode=explode, 
+        shadow=True, 
+        colors=plt.cm.viridis(np.linspace(0, 1, 5)))
 
-fig, ax = plt.subplots(figsize=(8, 8), subplot_kw=dict(polar=True))
+plt.title(f'En Çok Oyuncusu Olan İlk 5 Ülke ({nation_col})', fontsize=15, fontweight='bold')
+plt.show()
 
-for i, row in data.iterrows():
-    values = row[attributes].values.flatten().tolist()
-    values += values[:1]
-    ax.plot(angles, values, linewidth=2, label=row[name_col])
-    ax.fill(angles, values, alpha=0.25)
+# --- FİGÜR 2: 3D SAÇILIM GRAFİĞİ ---
+fig = plt.figure(figsize=(12, 9))
+ax = fig.add_subplot(111, projection='3d')
 
-ax.set_theta_offset(np.pi / 2)
-ax.set_theta_direction(-1)
-ax.set_thetagrids(np.degrees(angles[:-1]), labels)
+x = df['age']
+y = df['ball_control']
+z = df['dribbling']
 
-# Değer aralığını verine göre ayarla (Örn: Yetenekler 0-100 arasıysa)
-ax.set_ylim(0, 100) 
+p3d = ax.scatter(x, y, z, c=z, cmap='magma', s=50, alpha=0.6, edgecolors='w')
 
-plt.title('Oyuncu Yetenek Karşılaştırması', y=1.1, size=15)
-plt.legend(loc='upper right', bbox_to_anchor=(1.3, 1.1))
+ax.set_xlabel('Yaş')
+ax.set_ylabel('Ball Control')
+ax.set_zlabel('Dribbling')
+ax.set_title('3 Boyutlu Yetenek Analizi')
+
+fig.colorbar(p3d, ax=ax, label='Dribbling Puanı', shrink=0.5, aspect=10)
 plt.show()

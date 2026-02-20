@@ -1,152 +1,99 @@
-# 📊 FIFA 23 Oyuncu Analizi — Matplotlib ile Radar Grafiği
+# ⚽ FIFA 23 Oyuncu Analizi ve Görselleştirme Projesi
 
-Bu proje, Kaggle'dan alınan gerçek **FIFA 23** verilerini kullanarak futbolcu yeteneklerini analiz eden ve karşılaştıran bir Python uygulamasıdır. Görselleştirme katmanında **Matplotlib** ve **NumPy** ile oluşturulan profesyonel **Radar (Spider) Grafikleri** kullanılmaktadır.
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Pandas](https://img.shields.io/badge/Library-Pandas-150458.svg)](https://pandas.pydata.org/)
+[![Matplotlib](https://img.shields.io/badge/Library-Matplotlib-orange.svg)](https://matplotlib.org/)
+
+Bu proje, Kaggle'dan alınan **FIFA 23 gerçek oyuncu verilerini** kullanarak futbolcuların yeteneklerini, yaş dağılımlarını ve ülke populasyonlarını analiz eden kapsamlı bir veri görselleştirme çalışmasıdır. Proje, basit grafiklerden ileri seviye "Subplot" panellerine ve interaktif Radar grafiklerine kadar geniş bir yelpaze sunar.
 
 ---
 
-## 🚀 Özellikler
+## �️ Proje Görselleri (Analiz Çıktıları)
 
-- **Veri İşleme** — Pandas ile büyük ölçekli `player_stats.csv` dosyasının temizlenmesi ve filtrelenmesi
-- **Hata Yönetimi** — UTF-8 / Latin-1 karakter kodlaması ve eksik `NaN` değerleri için otomatik çözümler
-- **Radar Grafikleri** — Matplotlib polar eksen sistemi üzerinde dinamik Spider Chart üretimi
-- **Akıllı Sütun Eşleştirme** — Veri setindeki sütun isimlerine göre kendini adapte eden esnek yapı
-- **Çoklu Oyuncu Karşılaştırması** — Birden fazla oyuncuyu tek grafik üzerinde kıyaslama
+Projenin sunduğu farklı veri perspektifleri aşağıda detaylandırılmıştır:
+
+### 🌟 1. Radar Kapasite Analizi (`image.png`)
+Bu grafik, seçilen oyuncuların (örneğin Messi ve Neymar) teknik özelliklerini birbiriyle kıyaslamanıza olanak tanır. "Spider Chart" olarak da bilinen bu yapı, futbolcu profillerini analiz etmek için en profesyonel yöntemdir.
+<p align="center">
+  <img src="image.png" width="600" alt="Radar Grafiği">
+</p>
+
+### 📈 2. İleri Seviye Profesyonel Panel (`image2.png`)
+`analiz1.py` tarafından üretilen bu panel; ortalamalar, veriler arası bağlılık ve zirve noktalarını tek bir bakışta sunar. 
+*   **Yaş Histogramı:** Ortalama çizgisi (Annotation) ile birlikte.
+*   **Korelasyon:** Top kontrolü ve dribbling arasındaki ilişki.
+*   **Zirve Oyuncular:** Değer etiketli (Value Labels) bar grafiği.
+<p align="center">
+  <img src="image2.png" width="800" alt="Profesyonel Panel">
+</p>
+
+### 📊 3. Kaggle Tarzı Veri Paneli (`image1.png`)
+Verinin genel dağılımını ve oyuncu yoğunluğunu anlamak için kullanılan, daha temel ama etkili bir analiz paneli.
+<p align="center">
+  <img src="image1.png" width="800" alt="Veri Paneli">
+</p>
+
+### 🥧 4. Ülke Populasyon Analizi (`image3.png`)
+Veri setindeki futbolcuların hangi ülkelere ait olduğunu "Shadow" ve "Explode" efektli profesyonel bir pasta grafiği ile gösterir.
+<p align="center">
+  <img src="image3.png" width="500" alt="Pasta Grafiği">
+</p>
+
+---
+
+## 🚀 Temel Özellikler
+
+*   **Dinamik Radar Grafikleri:** Oyuncuların teknik (Ball Control, Dribbling, Marking vb.) özelliklerini kıyaslayan profesyonel görünümlü örümcek ağları.
+*   **Gelişmiş Subplots:** Matplotlib'in `subplots` yapısı ile birden fazla analizi tek bir pencerede toplama.
+*   **Otomatik Veri Temizleme:** Farklı karakter kodlamaları (Latin-1) ve eksik veriler için optimize edilmiş veri yükleme süreci.
+*   **3D Analiz:** `analiz.py` içerisinde yaş ve yetenek ilişkisini 3 boyutlu uzayda inceleme imkanı.
+*   **Annotation & Customizing:** Grafik üzerine metinler, oklar ve özel lejantlar ekleyerek veri hikayeleştirme.
 
 ---
 
 ## 🛠️ Kullanılan Teknolojiler
 
-| Kütüphane | Versiyon | Kullanım Amacı |
-|-----------|----------|----------------|
-| Python | 3.10+ | Ana dil |
-| Pandas | ≥ 1.5 | Veri okuma, filtreleme, temizleme |
-| Matplotlib | ≥ 3.6 | Radar grafiği çizimi (polar eksen) |
-| NumPy | ≥ 1.23 | Açısal hesaplamalar ve veri düzenleme |
+| Teknoloji | Kullanım Amacı |
+| :--- | :--- |
+| **Python 3.10+** | Ana Programlama Dili |
+| **Pandas** | Veri manipülasyonu, CSV işleme ve filtreleme |
+| **Matplotlib** | 2D ve 3D grafik çizim katmanı |
+| **Numpy** | Matematiksel hesaplamalar ve radyan dönüşümleri |
 
 ---
 
-## 📦 Kurulum
+## 📦 Kurulum ve Çalıştırma
 
-```bash
-# 1. Repoyu klonlayın
-git clone https://github.com/kullaniciadi/fifa23-radar-chart.git
-cd fifa23-radar-chart
+1.  **Depoyu Klonlayın veya İndirin:**
+    ```bash
+    git clone https://github.com/kullaniciadi/Matplotip.git
+    cd Matplotip
+    ```
 
-# 2. Sanal ortam oluşturun (önerilir)
-python -m venv venv
-source venv/bin/activate      # Linux / macOS
-venv\Scripts\activate         # Windows
+2.  **Gerekli Kütüphaneleri Yükleyin:**
+    ```bash
+    pip install pandas matplotlib numpy
+    ```
 
-# 3. Bağımlılıkları yükleyin
-pip install -r requirements.txt
-```
-
-### `requirements.txt`
-
-```
-pandas>=1.5
-matplotlib>=3.6
-numpy>=1.23
-```
+3.  **Analizleri Çalıştırın:**
+    *   Genel analiz ve 3D grafikler için: `python analiz.py`
+    *   Eğitim paneli ve notasyonlar için: `python analiz1.py`
+    *   Radar grafiği ve özet panel için: `python analiz2.py`
 
 ---
 
 ## 📂 Proje Yapısı
 
-```
-fifa23-radar-chart/
-│
-├── data/
-│   └── player_stats.csv        # Kaggle'dan indirilen ham veri seti
-│
-├── src/
-│   ├── data_loader.py          # CSV okuma ve ön işleme
-│   ├── radar_chart.py          # Matplotlib radar grafiği modülü
-│   └── compare_players.py      # Oyuncu karşılaştırma arayüzü
-│
-├── outputs/
-│   └── radar_output.png        # Üretilen grafik çıktısı
-│
-├── requirements.txt
-└── README.md
-```
+*   `analiz.py`: Pasta grafiği ve 3D saçılım analizi içerir.
+*   `analiz1.py`: Histogram, Scatter Plot ve Bar Plot içeren ileri seviye notasyonlu panel.
+*   `analiz2.py`: Orijinal radar grafiği ve basitleştirilmiş analiz paneli.
+*   `player_stats.csv`: Analiz edilen ana veri seti (FIFA 23 Player Stats).
+*   `image.png` - `image3.png`: Oluşturulan grafiklerin örnek çıktıları.
 
 ---
 
-## ▶️ Kullanım
-
-```bash
-python src/compare_players.py
-```
-
-Kod çalıştırıldığında istenen oyuncular seçilir ve aşağıdaki gibi bir radar grafiği üretilir:
-
-![Radar Grafiği Örneği](image.png)
+## 💡 Veri Kaynağı
+Bu projede kullanılan veriler Kaggle üzerindeki **"FIFA 23 Player Dataset"** üzerinden alınmıştır. Teknik yetenekler 1-100 ölçeğindedir.
 
 ---
-
-## 🎨 Matplotlib ile Radar Grafiği — Temel Mantık
-
-Radar grafikleri, Matplotlib'in **polar (kutupsal) eksen** sistemi üzerine inşa edilir.
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-kategoriler = ['Top Kontrolü', 'Dribbling', 'Savunma', 'Pas', 'Şut', 'Hız']
-N = len(kategoriler)
-
-# Açıları eşit aralıklarla dağıt, grafiği kapat
-acılar = np.linspace(0, 2 * np.pi, N, endpoint=False).tolist()
-acılar += acılar[:1]   # başlangıç noktasına dön (kapalı çokgen)
-
-fig, ax = plt.subplots(figsize=(7, 7), subplot_kw=dict(polar=True))
-
-def radar_ciz(degerler, renk, etiket):
-    degerler = degerler + degerler[:1]
-    ax.plot(acılar, degerler, color=renk, linewidth=2, label=etiket)
-    ax.fill(acılar, degerler, color=renk, alpha=0.2)
-
-# Oyuncu verileri (0–100 ölçeği)
-radar_ciz([85, 90, 40, 78, 88, 95], '#1f77b4', 'Oyuncu A')
-radar_ciz([70, 65, 80, 85, 72, 60], '#ff7f0e', 'Oyuncu B')
-
-ax.set_thetagrids(np.degrees(acılar[:-1]), kategoriler, fontsize=11)
-ax.set_ylim(0, 100)
-ax.set_title('Oyuncu Karşılaştırması', size=15, pad=20)
-ax.legend(loc='upper right', bbox_to_anchor=(1.3, 1.1))
-
-plt.tight_layout()
-plt.savefig('outputs/radar_output.png', dpi=150)
-plt.show()
-```
-
-### Kritik Noktalar
-
-- `subplot_kw=dict(polar=True)` → eksenin kutupsal olmasını sağlar
-- `np.linspace(0, 2π, N, endpoint=False)` → kategorileri daireye eşit dağıtır
-- Liste sonuna başlangıç değeri eklenmesi (`values[:1]`) → çokgeni kapatır
-- `ax.fill()` + `alpha` → yarı saydam alan dolgusu üretir
-
----
-
-## 📊 Veri Seti
-
-Veri seti **Kaggle — FIFA 23 Complete Player Dataset** kaynağından alınmıştır.
-
-Kullanılan başlıca sütunlar:
-
-| Sütun Adı | Açıklama |
-|-----------|----------|
-| `short_name` | Oyuncu kısa adı |
-| `pace` | Hız puanı (0–100) |
-| `shooting` | Şut puanı |
-| `passing` | Pas puanı |
-| `dribbling` | Dribbling puanı |
-| `defending` | Savunma puanı |
-| `physic` | Fiziksel güç puanı |
-
-
-
-
-![alt text](image.png)
+*Bu çalışma Matplotlib kütüphanesinin derinliklerini keşfetmek amacıyla hazırlanmıştır.* 🌟
