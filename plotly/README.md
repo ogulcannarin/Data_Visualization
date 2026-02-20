@@ -1,273 +1,96 @@
-# ⚽ FIFA 23 İnteraktif Analiz — Plotly ile Radar Grafiği
+# ⚽ FIFA 23 İnteraktif Veri Analizi ve Görselleştirme Portfolyosu
 
-Bu proje, **Plotly** kütüphanesini kullanarak FIFA 23 oyuncu verilerini tarayıcı tabanlı, interaktif grafiklerle görselleştirir. Kullanıcı, veri noktalarının üzerine gelerek anlık istatistikleri görebilir ve grafikle doğrudan etkileşime girebilir.
-
----
-
-## 🚀 Proje Genel Bakış
-
-Kaggle üzerinden alınan FIFA 23 veri seti üzerinde çalışılarak, oyuncu yetenekleri ve fiziksel parametreler arasındaki ilişkiler üç farklı boyutta incelenmiştir:
-
-| Analiz | Araç | Çıktı |
-|--------|------|-------|
-| Yetenek Karşılaştırma | Matplotlib | Statik radar grafiği (PNG) |
-| İstatistiksel İlişkiler | Seaborn | Korelasyon ısı haritası |
-| **İnteraktif Deneyim** | **Plotly** | **Tarayıcı tabanlı HTML** |
+Bu proje, **FIFA 23** oyuncu verilerini kullanarak **Plotly** kütüphanesi ile modern, interaktif ve profesyonel veri görselleştirme tekniklerini sergilemektedir. Proje, temel grafiklerden başlayarak ileri seviye 3D analizlere ve kapsamlı dashboard tasarımlarına kadar 5 ana bölümden oluşmaktadır.
 
 ---
 
-## 🎯 Neden Plotly?
+## 📊 Proje İçeriği ve Bölümler
 
-Matplotlib ile statik, Seaborn ile istatistiksel analizler mümkündür; ancak **Plotly**, üçüncü bir boyut ekler:
+### 01. Temel Analizler (Radar, Line, Scatter)
+Bu bölümde oyuncuların teknik yetenekleri karşılaştırılmış ve zaman içindeki gelişim trendleri incelenmiştir.
+- **Radar Analizi**: Oyuncuların teknik kapasitelerinin (Ball Control, Dribbling, vb.) örümcek ağ grafiği ile kıyaslanması.
+- **Trend Analizi**: Yetenek puanlarının oyuncu bazlı değişimleri.
 
-- **Hover (üzerine gelme)** → Veri noktasına tıklamadan anlık değer görüntüleme
-- **Zoom & Pan** → Grafiği fare ile büyütme / kaydırma
-- **Legend Toggle** → Oyuncuları tek tıkla göster/gizle
-- **HTML Çıktısı** → `oyuncu_kiyaslama.html` — kurulum gerektirmeden her tarayıcıda açılır
+| Örnek Görseller |
+| :---: |
+| ![Radar Analizi](01_Temel_Analizler/Ekran%20görüntüsü%202026-02-20%20155714.png) |
+| ![Line Analizi](01_Temel_Analizler/Ekran%20görüntüsü%202026-02-20%20155740.png) |
+| ![Scatter Analizi](01_Temel_Analizler/Ekran%20görüntüsü%202026-02-20%20155805.png) |
 
 ---
 
-## 📦 Kurulum
+### 02. Doğrulama ve Dağılım (Bubble, Histogram)
+İstatistiksel dağılımların ve değişkenler arası ilişkilerin daha derinlemesine incelendiği bölümdür.
+- **Bubble Chart**: Boy, kilo ve yetenek arasındaki üç boyutlu ilişkinin 2D düzlemde gösterimi.
+- **Histogram**: Oyuncu yaş dağılımı ve frekans analizi.
 
+| Örnek Görseller |
+| :---: |
+| ![Bubble Chart](02_Dogrulama_ve_Dagilim/Ekran%20görüntüsü%202026-02-20%20160053.png) |
+| ![Histogram](02_Dogrulama_ve_Dagilim/Ekran%20görüntüsü%202026-02-20%20160116.png) |
+
+---
+
+### 03. İstatistiksel Görselleştirme (Box Plot & Word Cloud)
+Veri setindeki aykırı değerlerin (outliers) tespiti ve metin tabanlı verilerin görselleştirilmesi sağlanmıştır.
+- **Box Plot**: Yaş gruplarına göre yetenek puanlarının standart sapma ve kartil analizi.
+- **Word Cloud**: Veri setindeki ülke popülasyonlarının görsel frekans haritası.
+
+| Örnek Görseller |
+| :---: |
+| ![Box Plot](03_Istatistiksel_Gorsellestirme/Ekran%20görüntüsü%202026-02-20%20160410.png) |
+| ![Word Cloud](03_Istatistiksel_Gorsellestirme/Ekran%20görüntüsü%202026-02-20%20160428.png) |
+
+---
+
+### 04. İleri Seviye Analizler (3D & Harita)
+Mekansal ve üç boyutlu verilerin analiz edildiği, projenin en etkileyici bölümlerinden biridir.
+- **3D Scatter**: Boy, Kilo ve Yetenek parametrelerinin 3 boyutlu uzayda interaktif analizi.
+- **Choropleth Harita**: Dünya üzerindeki oyuncu dağılım yoğunluğunun coğrafi gösterimi.
+
+| Örnek Görseller |
+| :---: |
+| ![3D Analiz](04_Ileri_Seviye_Analizler/Ekran%20görüntüsü%202026-02-20%20160753.png) |
+| ![Dünya Haritası](04_Ileri_Seviye_Analizler/Ekran%20görüntüsü%202026-02-20%20160919.png) |
+
+---
+
+### 05. Master Dashboard
+Tüm analizlerin bir araya getirildiği, yönetici özeti niteliğindeki final raporu tasarımıdır.
+- **Subplots**: Tek ekranda Bar, Pie, Harita ve 3D grafiklerin senkronize sunumu.
+
+| Final Dashboard Çıktısı |
+| :---: |
+| ![Master Dashboard](05_Master_Dashboard/Ekran%20görüntüsü%202026-02-20%20161130.png) |
+
+---
+
+## 🛠️ Teknik Altyapı ve Kurulum
+
+Bu projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyebilirsiniz.
+
+### 📦 Gerekli Kütüphaneler
+- `pandas`: Veri manipülasyonu
+- `plotly`: İnteraktif grafikler
+- `wordcloud`: Kelime bulutu oluşturma
+- `matplotlib`: Statik görselleştirme destekçisi
+
+### 🚀 Çalıştırma
 ```bash
-# 1. Repoyu klonlayın
-git clone https://github.com/kullaniciadi/fifa23-plotly-radar.git
-cd fifa23-plotly-radar
+# Bağımlılıkları yükleyin
+pip install pandas plotly wordcloud matplotlib
 
-# 2. Sanal ortam oluşturun
-python -m venv venv
-source venv/bin/activate      # Linux / macOS
-venv\Scripts\activate         # Windows
-
-# 3. Bağımlılıkları yükleyin
-pip install -r requirements.txt
-```
-
-### `requirements.txt`
-
-```
-pandas>=1.5
-plotly>=5.14
-numpy>=1.23
-```
-
-> Plotly, `pip install plotly` ile kurulur. Jupyter ortamında ek olarak `pip install nbformat` önerilir.
-
----
-
-## 📂 Proje Yapısı
-
-```
-fifa23-plotly-radar/
-│
-├── data/
-│   └── player_stats.csv          # Kaggle FIFA 23 ham veri seti
-│
-├── src/
-│   ├── data_loader.py            # CSV okuma ve ön işleme
-│   ├── analiz_plotly.py          # Plotly radar grafiği — ana modül
-│   ├── analiz.py                 # Matplotlib radar grafiği
-│   └── analiz_seaborn.py        # Seaborn korelasyon haritası
-│
-├── outputs/
-│   └── oyuncu_kiyaslama.html    # Tarayıcıda açılabilir interaktif çıktı
-│
-├── requirements.txt
-└── README.md
+# İlgili bölümlerdeki Python dosyalarını çalıştırın (Örn: Bölüm 5)
+python 05_Master_Dashboard/final_football_dashboard.py
 ```
 
 ---
 
-## ▶️ Kullanım
-
-```bash
-python src/analiz_plotly.py
-```
-
-Çalıştırıldığında `outputs/oyuncu_kiyaslama.html` dosyası oluşturulur. Bu dosyayı herhangi bir tarayıcıda açarak interaktif grafikle etkileşime geçebilirsiniz.
-
-![İnteraktif Radar Grafiği](image.png)
+## 💎 Neden Bu Proje?
+Bu çalışma, sadece veri görselleştirme değil, aynı zamanda ham veriden anlamlı hikayeler çıkarma yeteneğini temsil eder. **Plotly** sayesinde statik görsellerin aksine:
+- **Etkileşim**: Kullanıcı grafiklerle konuşabilir, zoom yapabilir ve odak noktasını seçebilir.
+- **Profesyonellik**: HTML tabanlı çıktılar sayesinde herhangi bir yazılım kurulumuna gerek kalmadan sunumlar yapılabilir.
+- **Derinlik**: 3D ve Harita analizleri ile standart grafiklerin ötesine geçilir.
 
 ---
-
-## 🎨 Plotly ile Radar Grafiği — Temel Mantık
-
-Plotly'de radar (spider) grafikleri için `go.Scatterpolar` kullanılır. Matplotlib'e kıyasla çok daha az kod gerektirir ve interaktivite kutudan çıkar.
-
-### Temel Yapı
-
-```python
-import plotly.graph_objects as go
-
-fig = go.Figure()
-
-fig.add_trace(go.Scatterpolar(
-    r=[85, 90, 40, 78, 88, 95, 85],       # Kapanış için ilk değeri tekrarla
-    theta=['Hız', 'Şut', 'Savunma', 'Pas', 
-           'Dribbling', 'Fizik', 'Hız'],   # Kapanış için ilk kategoriyi tekrarla
-    fill='toself',
-    name='Messi',
-    line_color='#636EFA'
-))
-
-fig.update_layout(
-    polar=dict(radialaxis=dict(visible=True, range=[0, 100])),
-    showlegend=True,
-    title='Oyuncu Karşılaştırması'
-)
-
-fig.show()                                  # Tarayıcıda aç
-fig.write_html('outputs/oyuncu_kiyaslama.html')  # HTML olarak kaydet
-```
-
-### Tam Proje Kodu
-
-```python
-import pandas as pd
-import plotly.graph_objects as go
-
-# ── Veri Yükleme ──────────────────────────────────────────────────
-for enc in ['utf-8', 'latin-1', 'cp1252']:
-    try:
-        df = pd.read_csv('data/player_stats.csv', encoding=enc)
-        break
-    except UnicodeDecodeError:
-        continue
-
-KATEGORILER = ['pace', 'shooting', 'passing', 'dribbling', 'defending', 'physic']
-ETIKETLER   = ['Hız', 'Şut', 'Pas', 'Dribbling', 'Savunma', 'Fizik']
-
-def oyuncu_getir(isim: str) -> list:
-    """Oyuncu adına göre veri döndürür; bulunamazsa sıfır listesi."""
-    satir = df[df['short_name'].str.lower() == isim.lower()]
-    if satir.empty:
-        print(f"⚠️  '{isim}' bulunamadı.")
-        return [0] * len(KATEGORILER)
-    return satir[KATEGORILER].fillna(0).iloc[0].tolist()
-
-# ── Grafik Oluşturma ──────────────────────────────────────────────
-OYUNCULAR = [
-    {'isim': 'L. Messi',   'renk': '#636EFA'},
-    {'isim': 'C. Ronaldo', 'renk': '#EF553B'},
-]
-
-fig = go.Figure()
-
-for oyuncu in OYUNCULAR:
-    degerler = oyuncu_getir(oyuncu['isim'])
-    # Kapalı çokgen için başa dön
-    r      = degerler + [degerler[0]]
-    theta  = ETIKETLER + [ETIKETLER[0]]
-
-    fig.add_trace(go.Scatterpolar(
-        r=r,
-        theta=theta,
-        fill='toself',
-        fillcolor=oyuncu['renk'],
-        opacity=0.25,
-        name=oyuncu['isim'],
-        line=dict(color=oyuncu['renk'], width=2),
-        hovertemplate='<b>%{theta}</b><br>Puan: %{r}<extra></extra>'
-    ))
-
-# ── Düzen Ayarları ────────────────────────────────────────────────
-fig.update_layout(
-    title=dict(text='⚽ FIFA 23 — Oyuncu Karşılaştırması', x=0.5, font_size=20),
-    polar=dict(
-        radialaxis=dict(visible=True, range=[0, 100], tickfont_size=10),
-        angularaxis=dict(tickfont_size=12)
-    ),
-    legend=dict(orientation='h', yanchor='bottom', y=-0.15, xanchor='center', x=0.5),
-    paper_bgcolor='#0e1117',
-    plot_bgcolor='#0e1117',
-    font_color='white'
-)
-
-# ── Çıktı ─────────────────────────────────────────────────────────
-fig.show()
-fig.write_html('outputs/oyuncu_kiyaslama.html', include_plotlyjs='cdn')
-print("✅ Graf kaydedildi: outputs/oyuncu_kiyaslama.html")
-```
-
----
-
-## 🔍 Temel API Referansı
-
-### `go.Scatterpolar` Parametreleri
-
-| Parametre | Tür | Açıklama |
-|-----------|-----|----------|
-| `r` | list | Radyal değerler (puan listesi) |
-| `theta` | list | Kategori etiketleri |
-| `fill` | str | `'toself'` → kapalı alan doldurma |
-| `fillcolor` | str | Alan rengi (hex veya CSS) |
-| `opacity` | float | Saydamlık (0–1) |
-| `hovertemplate` | str | Hover balonu için özel şablon |
-
-### `update_layout` — Polar Eksen
-
-```python
-fig.update_layout(
-    polar=dict(
-        radialaxis=dict(
-            visible=True,
-            range=[0, 100],       # Ölçek aralığı
-            showticklabels=True,
-            tickmode='linear',
-            dtick=20              # Her 20 birimde çizgi
-        ),
-        angularaxis=dict(
-            direction='clockwise' # Saat yönünde döndür
-        )
-    )
-)
-```
-
-### HTML Olarak Kaydetme
-
-```python
-# Plotly.js CDN üzerinden — küçük dosya boyutu (~5 KB)
-fig.write_html('grafik.html', include_plotlyjs='cdn')
-
-# Plotly.js gömülü — internet bağlantısı gerektirmez (~3 MB)
-fig.write_html('grafik_offline.html', include_plotlyjs=True)
-```
-
----
-
-## 📊 İstatistiksel Bulgular (Seaborn Heatmap)
-
-`analiz_seaborn.py` ile 19.000+ oyuncunun özellikleri tarandığında öne çıkan bulgular:
-
-- `ball_control` ↔ `dribbling` → **0.95 korelasyon** — teknik gelişimin ayrılmaz bütünlüğü
-- `pace` ↔ `physic` → **0.71 korelasyon** — fiziksel kapasite ile hız bağlantısı
-- `defending` ↔ `shooting` → **-0.42 korelasyon** — hücumcu/defansçı özelleşmesi
-
-```python
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-korelasyon = df[KATEGORILER].corr()
-
-plt.figure(figsize=(10, 8))
-sns.heatmap(korelasyon, annot=True, fmt='.2f', cmap='coolwarm',
-            center=0, square=True, linewidths=0.5)
-plt.title('FIFA 23 — Özellik Korelasyon Haritası')
-plt.tight_layout()
-plt.savefig('outputs/korelasyon_haritasi.png', dpi=150)
-```
-
----
-
-## ⚙️ Matplotlib vs Seaborn vs Plotly
-
-| Özellik | Matplotlib | Seaborn | Plotly |
-|---------|-----------|---------|--------|
-| Öğrenme eğrisi | Orta | Düşük | Düşük |
-| İnteraktivite | ❌ | ❌ | ✅ |
-| HTML çıktısı | ❌ | ❌ | ✅ |
-| Özelleştirme | Tam kontrol | Sınırlı | Orta-Yüksek |
-| Performans (büyük veri) | Yüksek | Yüksek | Orta |
-| Web entegrasyonu | ❌ | ❌ | ✅ |
-
-  ![alt text](image.png)
+*Hazırlayan: Hilmi Kılavuz / KARAYERİN OLSUN*
