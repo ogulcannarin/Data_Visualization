@@ -3,7 +3,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # 1. Veriyi yükle
-df = pd.read_csv('player_stats.csv', encoding='latin-1', low_memory=False)
+df = pd.read_csv('../data/player_stats.csv', encoding='latin-1', low_memory=False)
 
 # 2. Analiz etmek istediğimiz özellikleri seçelim
 # Veri setinde var olduğunu bildiğimiz sütunları kullanıyoruz
