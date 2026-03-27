@@ -18,5 +18,8 @@ venv.bak/
 .DS_Store
 *.csv
 !player_stats.csv
-!tam_veri.csv
-# Yukaridakilerin hepsi projede gerekli gibi duruyor, bu yüzden ! koyarak istisna yarattik, ama istenirse degistirilebilir.
+
+# Machine Learning Veri Setleri
+06_machine_learning/01_karar_agaclari/COVID/
+06_machine_learning/01_karar_agaclari/non-COVID/
+06_machine_learning/01_karar_agaclari/tam_veri.csv
